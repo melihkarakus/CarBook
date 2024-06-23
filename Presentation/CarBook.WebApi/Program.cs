@@ -7,6 +7,7 @@ using CarBook.Application.Features.CQRS.Handlers.ContactHandler;
 using CarBook.Application.Features.CQRS.Queries.BannerQueries;
 using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
+using CarBook.Application.Services;
 using CarBook.Domain.Entites;
 using CarBook.Persistence.Context;
 using CarBook.Persistence.Repostories;
@@ -70,7 +71,7 @@ builder.Services.AddScoped<RemoveContactCommandHandler>();
 #endregion
 
 
-
+builder.Services.AddApplicationServices(builder.Configuration);
 
 
 
