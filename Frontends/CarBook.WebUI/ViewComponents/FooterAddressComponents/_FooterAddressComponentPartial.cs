@@ -1,14 +1,14 @@
-﻿using CarBook.Dto.TestimonialDtos;
+﻿using CarBook.Dto.FooterAddressDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace CarBook.WebUI.ViewComponents.TestimonialViewComponents
+namespace CarBook.WebUI.ViewComponents.FooterAddressComponents
 {
-    public class _TestimonialComponentPartial : ViewComponent
+    public class _FooterAddressComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _TestimonialComponentPartial(IHttpClientFactory httpClientFactory)
+        public _FooterAddressComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,11 +16,11 @@ namespace CarBook.WebUI.ViewComponents.TestimonialViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44377/api/Testimonials");
+            var responseMessage = await client.GetAsync("https://localhost:44377/api/FooterAddress");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultFooterAddressDto>>(jsonData);
                 return View(values);
             }
             return View();
