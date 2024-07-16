@@ -2,18 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace CarBook.WebUI.Controllers
+namespace CarBook.WebUI.ViewComponents.ServiceViewComponents
 {
-    public class ServiceController : Controller
+    public class _ServiceComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public ServiceController(IHttpClientFactory httpClientFactory)
+        public _ServiceComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
-
-        public async Task<IActionResult> Index()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("http://localhost:5210/api/Services");
