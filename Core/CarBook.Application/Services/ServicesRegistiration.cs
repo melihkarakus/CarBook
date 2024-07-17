@@ -10,8 +10,12 @@ namespace CarBook.Application.Services
 {
     public static class ServicesRegistiration
     {
+        // Bu metod, IServiceCollection türünde bir uzantı metodudur.
+        // 'services' bağımlılıkları kaydetmek için kullanılır.
+        // 'configuration' yapılandırma ayarlarını tutar.
         public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
+            // MediatR kütüphanesini ekler ve MediatR hizmetlerini belirtilen derlemeden kaydeder.
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ServicesRegistiration).Assembly));
         }
     }
