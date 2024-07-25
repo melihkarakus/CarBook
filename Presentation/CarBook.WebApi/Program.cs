@@ -6,14 +6,17 @@ using CarBook.Application.Features.CQRS.Handlers.CategoryHandler;
 using CarBook.Application.Features.CQRS.Handlers.ContactHandler;
 using CarBook.Application.Features.CQRS.Queries.BannerQueries;
 using CarBook.Application.Features.Mediator.Handlers.BlogHandler;
+using CarBook.Application.Features.Mediator.Handlers.CarPricingHandler;
 using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.BlogInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
+using CarBook.Application.Interfaces.CarPricingInterfaces;
 using CarBook.Application.Services;
 using CarBook.Domain.Entites;
 using CarBook.Persistence.Context;
 using CarBook.Persistence.Repostories;
 using CarBook.Persistence.Repostories.BlogRepositories;
+using CarBook.Persistence.Repostories.CarPricingRepositories;
 using CarBook.Persistence.Repostories.CarRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +27,7 @@ builder.Services.AddScoped<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
+builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
 
 #region About
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -77,6 +81,10 @@ builder.Services.AddScoped<RemoveContactCommandHandler>();
 
 #region Blog
 builder.Services.AddScoped<GetLast3BlogWithAuthorQueryHandler>();
+#endregion
+
+#region CarPricing
+builder.Services.AddScoped<GetCarPricingQueryHandler>();
 #endregion
 
 builder.Services.AddApplicationServices(builder.Configuration);
