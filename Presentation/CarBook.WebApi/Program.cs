@@ -7,17 +7,23 @@ using CarBook.Application.Features.CQRS.Handlers.ContactHandler;
 using CarBook.Application.Features.CQRS.Queries.BannerQueries;
 using CarBook.Application.Features.Mediator.Handlers.BlogHandler;
 using CarBook.Application.Features.Mediator.Handlers.CarPricingHandler;
+using CarBook.Application.Features.Mediator.Handlers.TagCloudHandler;
+using CarBook.Application.Features.RepositoryPattern;
 using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.BlogInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.Interfaces.TagCloýdInterfaces;
 using CarBook.Application.Services;
+using CarBook.Domain;
 using CarBook.Domain.Entites;
 using CarBook.Persistence.Context;
 using CarBook.Persistence.Repostories;
 using CarBook.Persistence.Repostories.BlogRepositories;
 using CarBook.Persistence.Repostories.CarPricingRepositories;
 using CarBook.Persistence.Repostories.CarRepositories;
+using CarBook.Persistence.Repostories.CommentRepositories;
+using CarBook.Persistence.Repostories.TagCloudRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +34,8 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
+builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
 
 #region About
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -81,10 +89,15 @@ builder.Services.AddScoped<RemoveContactCommandHandler>();
 
 #region Blog
 builder.Services.AddScoped<GetLast3BlogWithAuthorQueryHandler>();
+builder.Services.AddScoped<GetAllBlogWithAuthorQueryHandler>();
 #endregion
 
 #region CarPricing
 builder.Services.AddScoped<GetCarPricingQueryHandler>();
+#endregion
+
+#region TagCloud
+builder.Services.AddScoped<GetTagCloudByIdQueryHandler>();
 #endregion
 
 builder.Services.AddApplicationServices(builder.Configuration);
