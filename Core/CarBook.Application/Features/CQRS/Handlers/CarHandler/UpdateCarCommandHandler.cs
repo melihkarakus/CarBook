@@ -28,6 +28,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandler
             values.Km = updateCar.Km;
             values.Model = updateCar.Model;
             values.Seat = updateCar.Seat;
+            values.Luggage = updateCar.Luggage;
             await _repository.UpdateAsync(values);
         }
     }
