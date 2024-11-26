@@ -39,10 +39,10 @@ namespace CarBook.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateContact(CreateContactCommand createContact)
         {
-            await _createContactCommandHandler.Handle(createContact);   
+            await _createContactCommandHandler.Handle(createContact);
             return Ok("Ekleme işlemi başarılı.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveContact(int id)
         {
             await _removeContactCommandHandler.Handle(new RemoveContactCommand(id));

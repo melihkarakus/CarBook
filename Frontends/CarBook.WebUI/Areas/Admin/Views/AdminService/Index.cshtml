@@ -1,0 +1,64 @@
+﻿@model List<ResultServiceDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Hizmetlerimiz Listesi</h4>
+                        <p class="card-subtitle mb-4">
+                            Hizmetlerimiz ile ilgili Ekleme, Silme ve Güncelleme işlemlerini bu sayfa üzerinden yapabilirsiniz.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>İçerik</th>
+                                        <th>İKon</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                        <th>Detaylar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.Title</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.IconUrl</td>
+
+                                            <td><a href="/Admin/AdminService/DeleteService/@item.ServiceID" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/AdminService/UpdateService/@item.ServiceID" class="btn btn-outline-success">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/Admin/AdminService/CreateService/" class="btn btn-outline-primary">Yeni Hizmetlerimiz Ekle</a>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>

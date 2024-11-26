@@ -1,0 +1,36 @@
+﻿@model CreatePricingDtos
+@{
+    ViewData["Title"] = "CreatePricing";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Fiyatlandırma Ekleme</h4>
+                        <p class="card-subtitle mb-4">
+                            Araba Fiyatlandırma Aylık, Günlük, Haftalık ile ilgili Ekleme işlemlerini bu sayfa üzerinden yapabilirsiniz.
+                        </p>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputModel">Fiyatlandırma Adı</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Name" placeholder="Fiyatlandırma Adı Giriniz...">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Ekle</button>
+                        </form>
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+

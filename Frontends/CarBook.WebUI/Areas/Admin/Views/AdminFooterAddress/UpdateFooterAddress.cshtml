@@ -1,0 +1,47 @@
+﻿@model UpdateFooterAddressDto
+@{
+    ViewData["Title"] = "UpdateFooterAddress";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Adres Güncelle</h4>
+                        <p class="card-subtitle mb-4">
+                            Adres ile ilgili Güncelle işlemlerini bu sayfa üzerinden yapabilirsiniz.
+                        </p>
+                        <form method="post">
+                            <input type="hidden" asp-for="FooterAddressID" class="form-control" />
+                            <div class="form-group">
+                                <label for="exampleInputModel">Adres</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Address" placeholder="Adres Giriniz...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputModel">Açık Adres</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Description" placeholder="Açık Adres Giriniz...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputModel">Telefon Numarası</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Phone" placeholder="Telefon Numarası Giriniz...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputModel">Email</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Email" placeholder="Email Giriniz...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Adres Güncelle</button>
+                        </form>
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>

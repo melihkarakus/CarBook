@@ -3,6 +3,8 @@ using CarBook.Application.Features.CQRS.Commands.CarCommand;
 using CarBook.Application.Features.CQRS.Handlers.BrandHandler;
 using CarBook.Application.Features.CQRS.Handlers.CarHandler;
 using CarBook.Application.Features.CQRS.Queries.CarQueries;
+using CarBook.Application.Features.Mediator.Queries.StatisticsQueries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +31,7 @@ namespace CarBook.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarWithBrandCommandHandler = getLast5CarWithBrandCommandHandler;
+
         }
         [HttpGet]
         public async Task<IActionResult> CarList()
@@ -63,7 +66,7 @@ namespace CarBook.WebApi.Controllers
         [HttpGet("GetCarWithBrand")]
         public IActionResult GetCarWithBrand()
         {
-            var values = _getCarWithBrandQueryHandler.Handle();
+            var values = _getCarWithBrandQueryHandler.Handle(); 
             return Ok(values);
         }
         [HttpGet("GetLast5CarWithBrandHandler")]
@@ -71,6 +74,7 @@ namespace CarBook.WebApi.Controllers
         {
             var values = _getLast5CarWithBrandCommandHandler.Handle();
             return Ok(values);
-        }       
+        }
+
     }
 }

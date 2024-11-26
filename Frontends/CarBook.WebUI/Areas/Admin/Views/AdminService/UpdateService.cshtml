@@ -1,0 +1,42 @@
+﻿@model UpdateServiceDto
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Hizmetlerimiz Güncelle</h4>
+                        <p class="card-subtitle mb-4">
+                            Hizmetlerimiz ile ilgili Güncelle işlemlerini bu sayfa üzerinden yapabilirsiniz.
+                        </p>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputModel">Başlık</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Title" placeholder="Başlık Giriniz...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputModel">Açıklama</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Description" placeholder="İçerik Giriniz...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputModel">İkon</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="IconUrl" placeholder="İkon Giriniz...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Hizmetlerimiz Güncelle</button>
+                        </form>
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>

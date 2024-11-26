@@ -35,7 +35,7 @@ namespace CarBook.WebApi.Controllers
             await _mediator.Send(createService);
             return Ok("Ekleme işlemi başarılı.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveService(int id)
         {
             await _mediator.Send(new RemoveServiceCommand(id));

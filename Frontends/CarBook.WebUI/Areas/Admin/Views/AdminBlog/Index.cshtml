@@ -1,0 +1,71 @@
+﻿@model List<ResultGetAllBlogWithAuthorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog Listesi</h4>
+                        <p class="card-subtitle mb-4">
+                            Blog ile ilgili Ekleme, Silme ve Güncelleme işlemlerini bu sayfa üzerinden yapabilirsiniz.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Yazar</th>
+                                        <th>Kategori</th>
+                                        <th>Tarih</th>
+                                        <th>Sil</th>
+                                        <th>Blog Aç</th>
+                                        <th>Yorumları Aç</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.Title</td>
+                                            <td>@item.AuthorName</td>
+                                            <td>@item.CategoryName</td>
+                                            <td>@(((DateTime)item.CreatedDate).ToString("dd-MMMM-yyyy"))</td>
+                                            
+                                            
+
+
+                                            <td><a href="/Admin/AdminBlog/DeleteBlog/@item.BlogID" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Blog/BlogDetail/@item.BlogID" class="btn btn-outline-success">Blog Aç</a></td>
+                                            <td><a href="/Admin/AdminComment/Index/@item.BlogID" class="btn btn-outline-success">Yorum Aç</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>
+
